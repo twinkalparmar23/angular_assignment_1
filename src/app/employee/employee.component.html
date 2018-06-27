@@ -1,0 +1,94 @@
+
+<p>
+  employee works!
+</p>
+
+<form #form="ngForm" novalidate (ngSubmit)="onSubmit(form.value)">
+
+  <label for="firstname">First name:</label><br>
+		<input type="text" name="firstName" [(ngModel)]="model.firstName">
+		<br><br>
+		
+		<label for="lastname">Last name:</label><br>
+		<input type="text" name="lastName" [(ngModel)]="model.lastName">
+		<br><br>
+
+    <label for="emailaddress">Email:</label><br>
+		<input type="email" name="emailaddress" id="emailaddress" [(ngModel)]="model.emailaddress"/>
+		<br><br>
+		
+		<label for="contact">Contact Number:</label><br>
+		<input type="text" name="contact" id="contact" [(ngModel)]="model.contact"/>
+		<br><br>
+
+		<label for="address">Address:</label><br>
+		<textarea id="address" name="address" [(ngModel)]="model.address"></textarea>
+		<br><br>
+		
+		<label for="username">Username:</label><br>
+		<input type="text" name="username" id="username"[(ngModel)]="model.username"/>
+		<br><br>
+		
+		<label for="pwd">Password:</label><br>
+		<input type="password" name="pwd" id="pwd" [(ngModel)]="model.pwd"/>
+		<br><br>
+
+   <label>Gender:</label><br>
+		<label><input type="radio" name="gender" value="male" [(ngModel)]="model.gender"/> Male<br></label>
+		<label><input type="radio" name="gender"  value="female"  [(ngModel)]="model.gender"/> Female<br></label>
+		<br>
+
+    <label>Qualification: </label><br>
+		<select name="qual" [(ngModel)]="model.qual">
+			<option *ngFor="let qualification of qualifications" >
+        {{qualification}}
+      </option>
+		</select>
+		<br><br>
+
+    <label>Experience: </label><br>
+		<select name="experience" [(ngModel)]="model.exp">
+			<option *ngFor="let exp of experience">
+        {{exp}}
+      </option>
+		</select>
+		<br><br>
+
+    <label>Coding languages: </label><br>
+   <!-- <div >
+    <div *ngFor="let lang of languages; let i = index;">
+      <label  for="lang{{lang.value}}">
+      <input type="checkbox" 
+       name="languages"
+       value="{{lang.name}}"
+       [checked]="lang.checked" 
+       
+       />
+        {{lang.name}}</label>
+    </div>
+    
+    </div>
+    -->
+
+    <div *ngFor="let lang of languages; let i = index;">
+      <label  for="lang{{lang.value}}">
+      <input type="checkbox" 
+       name="languages"
+       
+       value="{{lang.name}}"
+       
+      (change)="change($event, lang,i)"
+       />
+        {{lang.name}}</label>
+    </div>
+
+    <br><br>
+
+    <button type="submit" >Submit</button>
+</form>
+<!--
+Model: {{model | json}}
+<br>
+Angular:{{form.value | json}}
+<br>
+-->
