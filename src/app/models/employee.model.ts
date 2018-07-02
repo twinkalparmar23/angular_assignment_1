@@ -1,9 +1,23 @@
-export class Employee {
-    constructor(
-        
-    ) {
-        
-    }
+export interface IEmployee{
+    
+     firstName:string;
+      lastName:string;
+      emailaddress:string;
+      contact:number;
+      address:string;
+      username:string;
+      pwd:string;
+      gender:string;
+      qual:string;
+      exp:string;
+      languages:string[];
+}
+
+
+export class Employee implements IEmployee{
+    constructor(    
+    ) { }
+   
      public firstName:string;
      public lastName:string;
      public emailaddress:string;

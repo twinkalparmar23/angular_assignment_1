@@ -1,0 +1,40 @@
+<h3 style="text-align:center;">
+  Employee-Data
+</h3>
+<br>
+<table class='table' >
+<thead>
+<tr>
+      <th> Firstname</th>
+      <th> Lastname</th>
+      <th  style="text-align:center;"> Email</th>
+      <th> Contact</th>
+      <th> Address</th>
+      <th> Username</th>
+      <th> Gender</th>
+      <th> Qualification</th>
+      <th> Experience</th>
+      <th> Languages</th>
+</tr>
+</thead>
+<br>
+      <tbody>
+      <tr *ngFor='let emp of employees'>
+          <td>{{ emp.firstName }}</td>
+          <td>{{ emp.lastName }}</td>
+          <td>{{ emp.emailaddress }}</td>
+          <td>{{ emp.contact }}</td>
+          <td>{{ emp.address }}</td>
+          <td>{{ emp.username }}</td>
+          <td>{{ emp.gender }}</td>
+          <td style="text-align:center;">{{ emp.qual }}</td>
+          <td style="text-align:center;">{{ emp.exp }}</td>
+          <td>{{ emp.languages }}</td>
+          <td><button (click)="editEmployee(emp.firstName)"  class="btn btn-primary">Edit</button></td>
+          <td><button (click)="deleteEmployee(emp.firstName)"  class="btn btn-danger">Delete</button></td>
+      </tr>
+      </tbody>
+   </table>     
+          
+          
+           

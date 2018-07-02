@@ -1,13 +1,12 @@
-
-<h3>
-  Add New Employee:
+<h3 >
+  Edit Employee:
 </h3>
-<br>
+<br><br>
 
 <form #form="ngForm" novalidate (ngSubmit)="onSubmit(form.value)">
 
-    <label for="firstname">First name:</label><br>
-		<input type="text" name="firstName" [(ngModel)]="model.firstName" >
+  <label for="firstname">First name:</label><br>
+		<input type="text" name="firstName" [(ngModel)]="model.firstName">
 		<br><br>
 		
 		<label for="lastname">Last name:</label><br>
@@ -85,8 +84,8 @@
 
     <br><br>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
-    <br>
+    <button type="submit"  class="btn btn-primary">Submit</button>
+    <button (click)="btnCancel()"  class="btn btn-primary" style="margin-left:10px;">Cancel</button>
 </form>
 <!--
 Model: {{model | json}}

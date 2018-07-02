@@ -1,47 +1,33 @@
 import { Component, OnInit } from '@angular/core';
-//import {Employee} from '../models/employee.model';
+import { ActivatedRoute,Router } from '@angular/router';
 import { IEmployee, Employee } from '../models/employee.model';
 import {EmployeeService} from '../models/employee.service';
-import { ActivatedRoute,Router } from '@angular/router';
 
 @Component({
-  selector: 'app-employee',
-  templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.css']
+  selector: 'app-edit-employee',
+  templateUrl: './edit-employee.component.html',
+  styleUrls: ['./edit-employee.component.css']
 })
-export class EmployeeComponent implements OnInit {
+export class EditEmployeeComponent implements OnInit {
 
-  constructor(private _employeeService:EmployeeService,private router:Router) { }
-
+  model=new Employee();
+  name:string;
   qualifications:string[];
   experience:string[];
   languages:any[];
   selectedValue :string[]=[];
   j:number;
 
-    public firstName:string;
-     public lastName:string;
-     public emailaddress:string;
-     public contact:number;
-     public address:string;
-     public username:string;
-     public pwd:string;
-     public gender:string;
-     public qual:string;
-     public exp:string;
 
-     
-
-  model=new Employee();
-  
+  constructor(private _employeeService:EmployeeService,private route:ActivatedRoute,private router:Router) {
+     this.name=this.route.snapshot.params['name'];
+   }
 
   ngOnInit() {
-    
-   
-    this.qualifications=['BE','B.Tech','M.Tech','BCA','MCA'];
-    this.experience=['1','2','3','4','5'];
-    //this.languages=['C/C++','JAVA','C#','PHP','Python'];
-    this.languages=[
+
+      this.qualifications=['BE','B.Tech','M.Tech','BCA','MCA'];
+      this.experience=['1','2','3','4','5'];
+      this.languages=[
       {name:'C/C++',checked:false},
       {name:'JAVA',checked:false},
       {name:'C#',checked:false},
@@ -49,16 +35,12 @@ export class EmployeeComponent implements OnInit {
       {name:'Python',checked:false}
       ];
 
-      
+      //console.log(this.route.snapshot.params['name']);
+      this.model=this._employeeService.getEmployeeData(this.name);
+
   }
 
-  /*changeCheckbox(languages, i) {
-    if (languages) {
-      this.languages[i].checked = !this.languages[i].checked;
-    }
-  }*/
-
-change(e, languages,i){
+  change(e, languages,i){
  
     if(!languages.checked){
        this.languages[i].checked = !this.languages[i].checked;
@@ -76,7 +58,7 @@ change(e, languages,i){
     //console.log(this.languages[i].checked);
    //console.log(this.selectedValue);
   }
- 
+
   onSubmit(form:any) {
     this.model.languages=this.selectedValue;
     //console.log(form);
@@ -84,8 +66,13 @@ change(e, languages,i){
     //console.log(this.model);
     //console.log("languages:"+this.selectedValue);
 
-    this._employeeService.addEmployee(this.model);
+    this._employeeService.saveEditedData(this.model);
     this.router.navigate(['/employeelist']);
+    //this.router.navigate(['/employeelist']);
      }
 
+  btnCancel(){
+    //form.reset();
+    this.router.navigate(['/employeelist']);
+  }
 }
