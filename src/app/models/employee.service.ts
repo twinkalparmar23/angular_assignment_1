@@ -49,7 +49,7 @@ export class EmployeeService {
     ];
 
     j:number;
-
+    
     getEmployees(){
         return this.employees;
     }
@@ -86,7 +86,9 @@ export class EmployeeService {
                break;
            }
        }
-       this.employees.splice(z,1,emp);
+       //console.log(z);
+       this.employees[z]=emp;
+       //this.employees.splice(z,1,emp);
     }
 
     deleteEmployee(name){

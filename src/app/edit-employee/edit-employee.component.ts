@@ -54,6 +54,7 @@ export class EditEmployeeComponent implements OnInit {
       //this.selectedValue.pop();
       
     }
+    
     //console.log(languages);
     //console.log(this.languages[i].checked);
    //console.log(this.selectedValue);
@@ -61,6 +62,7 @@ export class EditEmployeeComponent implements OnInit {
 
   onSubmit(form:any) {
     this.model.languages=this.selectedValue;
+    
     //console.log(form);
     //console.log(this.model.languages);
     //console.log(this.model);
